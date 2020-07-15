@@ -1,0 +1,24 @@
+{
+  "name": "jombay-interview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon",
+    "build": "npm install && tsc",
+    "prod": "npm run build && node ./dist/server.js"
+  },
+  "keywords": [],
+  "author": "Rigved Patki <rigved.patki@gmail.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^14.0.23",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  }
+}
