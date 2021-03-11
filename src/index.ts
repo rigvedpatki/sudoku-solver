@@ -1,5 +1,7 @@
 import { red, green, yellow } from 'chalk'
 
+const timer = (ms: number) => new Promise(res => setTimeout(res, ms))
+
 let sudokuMainMatrix: Array<Array<number>> = [
   [0, 0, 5, 8, 7, 6, 3, 0, 0],
   [4, 0, 0, 0, 3, 0, 5, 0, 0],
@@ -25,7 +27,7 @@ async function main() {
   let steps = 0
   let loop = 0
   let previousPassSudoku: Array<Array<number>> = sudokuMainMatrix
-  function pass(sudokuMatrix: Array<Array<number>>) {
+  async function pass(sudokuMatrix: Array<Array<number>>) {
     passes = passes + 1
     console.log(
       `================================================== Pass ${passes} ==================================================`
@@ -75,6 +77,7 @@ async function main() {
               column: columnIndex
             })
             console.log(`Step number ${steps}`)
+            await timer(3000)
           }
         }
         loop = loop + 1
