@@ -1,4 +1,4 @@
-import { red, green } from 'chalk'
+import { red, green, yellow } from 'chalk'
 
 let sudokuMainMatrix: Array<Array<number>> = [
   [0, 0, 5, 8, 7, 6, 3, 0, 0],
@@ -242,13 +242,6 @@ function displaySudokuMatrix(
   matrix: Array<Array<number>>,
   position?: Position
 ) {
-  // let rowText = ''
-  // matrix.forEach(row => {
-  //   rowText = `| ${row.join(' | ')} |`
-  //   console.log('-'.repeat(rowText.length))
-  //   console.log(rowText)
-  // })
-  // console.log('-'.repeat(rowText.length))
   for (let rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
     let el = ''
     if (rowIndex === 0) {
@@ -264,14 +257,28 @@ function displaySudokuMatrix(
         position => position.row === rowIndex && position.column === columnIndex
       )
       if (zeroPosition) {
-        if (position) {
-          if (position.row === rowIndex && position.column === columnIndex) {
-            process.stdout.write(`| ${red(matrix[rowIndex][columnIndex])} `)
+        if (matrix[rowIndex][columnIndex] === 0) {
+          if (position) {
+            if (position.row === rowIndex && position.column === columnIndex) {
+              process.stdout.write(`| ${red(matrix[rowIndex][columnIndex])} `)
+            } else {
+              process.stdout.write(`| ${green(matrix[rowIndex][columnIndex])} `)
+            }
           } else {
             process.stdout.write(`| ${green(matrix[rowIndex][columnIndex])} `)
           }
         } else {
-          process.stdout.write(`| ${green(matrix[rowIndex][columnIndex])} `)
+          if (position) {
+            if (position.row === rowIndex && position.column === columnIndex) {
+              process.stdout.write(`| ${red(matrix[rowIndex][columnIndex])} `)
+            } else {
+              process.stdout.write(
+                `| ${yellow(matrix[rowIndex][columnIndex])} `
+              )
+            }
+          } else {
+            process.stdout.write(`| ${yellow(matrix[rowIndex][columnIndex])} `)
+          }
         }
       } else {
         process.stdout.write(`| ${matrix[rowIndex][columnIndex]} `)
